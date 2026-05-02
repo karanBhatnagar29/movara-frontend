@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, HeartPulse, Globe, Sparkles, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, HeartPulse, Globe, Sparkles, ShieldCheck, Quote } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Hero } from "@/components/site/Hero";
+import { Marquee } from "@/components/site/Marquee";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { PricingCard } from "@/components/site/PricingCard";
