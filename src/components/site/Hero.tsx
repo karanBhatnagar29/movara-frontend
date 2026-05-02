@@ -44,7 +44,7 @@ export function Hero({
   ],
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden pt-20 md:pt-24">
+    <section className="relative overflow-hidden pt-32 md:pt-36">
       {/* Ambient warm blobs */}
       <div className="pointer-events-none absolute -left-32 top-32 h-[28rem] w-[28rem] animate-float-slow rounded-full bg-[var(--peach)] opacity-70 blur-3xl" />
       <div className="pointer-events-none absolute right-[-8rem] top-10 h-[32rem] w-[32rem] animate-float-slow rounded-full bg-[var(--gold)] opacity-50 blur-3xl [animation-delay:-6s]" />
@@ -52,7 +52,7 @@ export function Hero({
 
       <div className="container-x relative grid gap-10 pb-12 lg:grid-cols-12 lg:gap-8 lg:pb-18">
         {/* Left: copy */}
-        <div className="lg:col-span-7 lg:pt-4">
+        <div className="relative z-10 lg:col-span-7 lg:pt-6">
           {/* Editorial eyebrow with date marker */}
           <div className="flex flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
             <span className="h-px w-10 bg-foreground/30" />
