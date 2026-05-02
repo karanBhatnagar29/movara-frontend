@@ -97,7 +97,7 @@ export function Hero({
         </div>
 
         {/* Right: image collage */}
-        <div className="relative lg:col-span-5 lg:pl-3">
+        <div className="relative pb-10 lg:col-span-5 lg:pl-3 lg:pb-14">
           {/* Main hero image */}
           <div className="relative aspect-[4/4.8] overflow-hidden rounded-[1.75rem] shadow-elegant">
             <img
@@ -108,21 +108,21 @@ export function Hero({
               height={1350}
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-[var(--ocean)]/30 via-transparent to-transparent" />
+          </div>
 
-            {/* Live now chip */}
-            <div className="absolute inset-x-3 bottom-3 z-20">
-              <div className="flex items-center gap-3 rounded-2xl bg-background/95 p-2.5 shadow-soft backdrop-blur-md">
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[var(--coral)]">
-                  <Star className="h-4 w-4 fill-[var(--coral-foreground)] text-[var(--coral-foreground)]" />
-                  <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--coral)] opacity-75" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--coral)] ring-2 ring-background" />
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-foreground">Live now · Morning Flow</p>
-                  <p className="text-xs text-foreground/60">42 practicing together</p>
-                </div>
+          {/* Live now chip */}
+          <div className="absolute inset-x-3 -bottom-2 z-20 lg:inset-x-6">
+            <div className="flex items-center gap-3 rounded-2xl bg-background/95 p-2.5 shadow-soft backdrop-blur-md">
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[var(--coral)]">
+                <Star className="h-4 w-4 fill-[var(--coral-foreground)] text-[var(--coral-foreground)]" />
+                <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--coral)] opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--coral)] ring-2 ring-background" />
+                </span>
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-foreground">Live now · Morning Flow</p>
+                <p className="text-xs text-foreground/60">42 practicing together</p>
               </div>
             </div>
           </div>
