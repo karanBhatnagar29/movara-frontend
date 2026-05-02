@@ -7,8 +7,10 @@
 
 /*
  * Movara — premium wellness & movement design system.
- * Palette: deep ocean teal, coral, warm peach, sunlit gold, soft mint, ivory.
+ * Palette: deep forest sage, vibrant terracotta, warm clay, mustard ochre, soft sage, cream.
  * Typography: Fraunces (editorial serif) + Inter (modern sans).
+ * Note: legacy token names (coral/peach/mint/ocean/gold/sky) preserved for component compatibility,
+ * but their hues are remapped to the new sage & terracotta system.
  */
 
 @theme inline {
