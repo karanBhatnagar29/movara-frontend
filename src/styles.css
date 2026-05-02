@@ -201,7 +201,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: radial-gradient(oklch(0.22 0.04 200 / 0.04) 1px, transparent 1px);
+    background-image: radial-gradient(oklch(0.24 0.04 150 / 0.04) 1px, transparent 1px);
     background-size: 3px 3px;
     mix-blend-mode: multiply;
   }
