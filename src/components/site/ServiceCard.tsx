@@ -13,9 +13,11 @@ const ACCENT_BG: Record<NonNullable<ServiceSummary["accent"]>, string> = {
 
 export function ServiceCard({
   service,
+  index,
   size = "md",
 }: {
   service: ServiceSummary;
+  index?: number;
   size?: "md" | "lg";
 }) {
   return (
@@ -23,8 +25,8 @@ export function ServiceCard({
       to={"/services/$slug" as "/"}
       params={{ slug: service.slug } as never}
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-3xl bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant",
-        size === "lg" ? "min-h-[28rem]" : "min-h-[24rem]",
+        "group relative flex flex-col overflow-hidden rounded-[1.75rem] bg-card shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:shadow-elegant",
+        size === "lg" ? "min-h-[28rem]" : "min-h-[26rem]",
       )}
     >
       <div className="relative flex-1 overflow-hidden">
@@ -32,9 +34,18 @@ export function ServiceCard({
           src={service.imageUrl}
           alt={service.title}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--ocean)]/70 via-[var(--ocean)]/10 to-transparent" />
+
+        {/* Editorial number */}
+        {typeof index === "number" && (
+          <span className="absolute right-5 top-5 font-display text-4xl italic text-ivory/90 mix-blend-screen">
+            № {String(index + 1).padStart(2, "0")}
+          </span>
+        )}
+
+        {/* Tags */}
         <div className="absolute left-4 top-4 flex flex-wrap gap-2">
           <span
             className={cn(
@@ -45,24 +56,30 @@ export function ServiceCard({
             {service.category}
           </span>
           {service.intensity && (
-            <span className="rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur">
+            <span className="rounded-full bg-background/95 px-3 py-1 text-xs font-medium text-foreground backdrop-blur">
               {service.intensity}
             </span>
           )}
         </div>
+
+        {/* Title overlay */}
+        <div className="absolute inset-x-5 bottom-5">
+          <h3 className="font-display text-3xl leading-tight tracking-tight text-ivory drop-shadow-md">
+            {service.title}
+          </h3>
+        </div>
       </div>
 
       <div className="flex items-end justify-between gap-4 bg-card p-6">
-        <div>
-          <h3 className="font-display text-2xl tracking-tight">{service.title}</h3>
-          <p className="mt-1 text-sm text-foreground/65">{service.tagline}</p>
+        <div className="min-w-0">
+          <p className="text-sm text-foreground/70 line-clamp-2">{service.tagline}</p>
           {service.durationLabel && (
-            <p className="mt-2 text-xs uppercase tracking-wider text-foreground/45">
+            <p className="mt-2 text-[0.7rem] uppercase tracking-[0.18em] text-foreground/45">
               {service.durationLabel}
             </p>
           )}
         </div>
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-foreground text-background transition-transform duration-300 group-hover:rotate-45">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-foreground text-background transition-transform duration-300 group-hover:rotate-45 group-hover:bg-[var(--coral)] group-hover:text-[var(--coral-foreground)]">
           <ArrowUpRight className="h-5 w-5" />
         </span>
       </div>
