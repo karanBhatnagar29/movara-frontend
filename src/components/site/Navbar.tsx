@@ -1,6 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
@@ -13,10 +16,16 @@ const NAV = [
   { to: "/my-classes", label: "My Classes" },
 ] as const;
 
-export function Navbar() {
+export function Navbar({
+  brandName = "Movara",
+  contactCtaLabel = "Book a Discovery Call",
+}: {
+  brandName?: string;
+  contactCtaLabel?: string;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const path = useRouterState({ select: (s) => s.location.pathname });
+  const path = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -45,7 +54,7 @@ export function Navbar() {
               : "bg-background/40 backdrop-blur-md",
           )}
         >
-          <Logo />
+          <Logo brandName={brandName} />
 
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV.map((item) => {
@@ -53,7 +62,7 @@ export function Navbar() {
               return (
                 <li key={item.to}>
                   <Link
-                    to={item.to}
+                    href={item.to}
                     className={cn(
                       "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                       active
@@ -70,8 +79,8 @@ export function Navbar() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <Button asChild variant="coral" size="default" className="group">
-              <Link to="/contact">
-                Book a Discovery Call
+              <Link href="/contact">
+                {contactCtaLabel}
                 <ArrowUpRight className="transition-transform group-hover:rotate-45" />
               </Link>
             </Button>
@@ -106,7 +115,7 @@ export function Navbar() {
               return (
                 <Link
                   key={item.to}
-                  to={item.to}
+                  href={item.to}
                   className={cn(
                     "block rounded-2xl px-5 py-4 text-lg font-display tracking-tight transition-colors",
                     active
@@ -120,8 +129,8 @@ export function Navbar() {
             })}
             <div className="pt-2">
               <Button asChild variant="coral" size="lg" className="w-full">
-                <Link to="/contact">
-                  Book a Discovery Call <ArrowUpRight />
+                <Link href="/contact">
+                  {contactCtaLabel} <ArrowUpRight />
                 </Link>
               </Button>
             </div>

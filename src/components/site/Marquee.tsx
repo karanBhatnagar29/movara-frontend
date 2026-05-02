@@ -33,9 +33,7 @@ export function Marquee({ items = DEFAULT_ITEMS, variant = "dark" }: MarqueeProp
       <div className="flex w-max animate-marquee items-center gap-10 py-4 will-change-transform md:gap-14 md:py-5">
         {loop.map((label, i) => (
           <div key={i} className="flex shrink-0 items-center gap-10 md:gap-14">
-            <span className="font-display text-xl tracking-tight md:text-3xl">
-              {label}
-            </span>
+            <span className="font-display text-xl tracking-tight md:text-3xl">{label}</span>
             <Asterisk
               className={`h-5 w-5 md:h-7 md:w-7 ${
                 isDark ? "text-[var(--coral)]" : "text-[var(--coral)]"

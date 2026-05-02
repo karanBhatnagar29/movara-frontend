@@ -1,7 +1,12 @@
-import { Calendar, Clock, Users, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Calendar, Clock, Users } from "lucide-react";
 import type { BatchSession } from "./types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+function toSrc(asset: BatchSession["imageUrl"]) {
+  return typeof asset === "string" ? asset : asset.src;
+}
 
 const ACCENT: Record<NonNullable<BatchSession["accent"]>, string> = {
   coral: "from-[var(--coral)]/20 to-[var(--peach)]/30",
@@ -33,7 +38,7 @@ export function BatchCard({ b }: { b: BatchSession }) {
     <article className="group flex flex-col overflow-hidden rounded-3xl bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant">
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
-          src={b.imageUrl}
+          src={toSrc(b.imageUrl)}
           alt={b.title}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -56,7 +61,7 @@ export function BatchCard({ b }: { b: BatchSession }) {
 
       <div className="flex flex-1 flex-col gap-5 p-6">
         <div>
-          <h3 className="font-display text-2xl tracking-tight">{b.title}</h3>
+          <h3 className="font-display text-[1.6rem] tracking-tight md:text-[1.75rem]">{b.title}</h3>
           <p className="mt-1 text-sm text-foreground/65">with {b.instructor}</p>
         </div>
 
@@ -79,16 +84,15 @@ export function BatchCard({ b }: { b: BatchSession }) {
             <span>{pct}% full</span>
           </div>
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
-            <div
-              className="h-full rounded-full bg-gradient-warm"
-              style={{ width: `${pct}%` }}
-            />
+            <div className="h-full rounded-full bg-gradient-warm" style={{ width: `${pct}%` }} />
           </div>
         </div>
 
-        <Button variant="default" size="lg" className="mt-2 w-full group/btn">
-          Reserve seat
-          <ArrowUpRight className="transition-transform group-hover/btn:rotate-45" />
+        <Button asChild variant="default" size="lg" className="mt-2 w-full group/btn">
+          <Link href={`/enroll/${b.id}`}>
+            Reserve seat
+            <ArrowUpRight className="transition-transform group-hover/btn:rotate-45" />
+          </Link>
         </Button>
       </div>
     </article>

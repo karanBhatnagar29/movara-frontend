@@ -9,14 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-soft hover:shadow-elegant hover:-translate-y-0.5",
+        default:
+          "bg-primary text-primary-foreground shadow-soft hover:shadow-elegant hover:-translate-y-0.5",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
           "border border-foreground/15 bg-transparent text-foreground hover:bg-foreground hover:text-background hover:border-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-foreground/5 text-foreground",
         link: "text-primary underline-offset-4 hover:underline rounded-none",
-        coral: "bg-[var(--coral)] text-[var(--coral-foreground)] shadow-glow hover:-translate-y-0.5 hover:shadow-[0_40px_90px_-30px_oklch(0.72_0.17_32/0.6)]",
+        coral:
+          "bg-[var(--coral)] text-[var(--coral-foreground)] shadow-glow hover:-translate-y-0.5 hover:shadow-[0_40px_90px_-30px_oklch(0.72_0.17_32/0.6)]",
         ocean: "bg-gradient-ocean text-ivory shadow-elegant hover:-translate-y-0.5",
         ivory: "bg-ivory text-foreground hover:bg-white shadow-soft hover:shadow-elegant",
         soft: "bg-foreground/5 text-foreground hover:bg-foreground/10 backdrop-blur-sm",

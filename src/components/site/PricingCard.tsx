@@ -1,5 +1,5 @@
-import { Check, ArrowUpRight } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
+import { ArrowUpRight, Check } from "lucide-react";
 import type { PricingPlan } from "./types";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
   return (
     <div
       className={cn(
-        "relative flex flex-col rounded-3xl border p-8 transition-all duration-500",
+        "relative flex flex-col rounded-3xl border p-7 transition-all duration-500",
         highlighted
           ? "border-transparent bg-gradient-ocean text-ivory shadow-elegant"
           : "border-foreground/10 bg-card text-foreground hover:-translate-y-1 hover:shadow-soft",
@@ -36,13 +36,13 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
       </p>
 
       <div className="mt-6 flex items-end gap-2">
-        <span className="font-display text-5xl tracking-tight">{plan.priceLabel}</span>
+        <span className="font-display text-4xl tracking-tight md:text-[2.8rem]">{plan.priceLabel}</span>
         <span className={cn("pb-2 text-sm", highlighted ? "text-ivory/65" : "text-foreground/55")}>
           {plan.cadenceLabel}
         </span>
       </div>
 
-      <ul className="mt-8 space-y-3">
+      <ul className="mt-7 space-y-3">
         {plan.features.map((f) => (
           <li key={f} className="flex items-start gap-3 text-sm">
             <span
@@ -58,14 +58,14 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
         ))}
       </ul>
 
-      <div className="mt-8 pt-2">
+      <div className="mt-7 pt-2">
         <Button
           asChild
           variant={highlighted ? "ivory" : "default"}
           size="lg"
           className="w-full group"
         >
-          <Link to={"/contact" as "/"}>
+          <Link href="/contact">
             {plan.ctaLabel}
             <ArrowUpRight className="transition-transform group-hover:rotate-45" />
           </Link>

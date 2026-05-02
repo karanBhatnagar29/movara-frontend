@@ -1,5 +1,10 @@
-# Logs
-logs
+# =========================
+
+# LOGS
+
+# =========================
+
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,26 +12,135 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-.output
-.vinxi
-.tanstack/**
-.nitro
+# =========================
+
+# DEPENDENCIES
+
+# =========================
+
+node_modules/
+
+# =========================
+
+# BUILD OUTPUTS
+
+# =========================
+
+dist/
+.output/
+.next/
+coverage/
+*.tsbuildinfo
+
+# =========================
+
+# ENV FILES (VERY IMPORTANT)
+
+# =========================
+
+.env
+.env.*
+!.env.example
+
+# =========================
+
+# LOCAL FILES
+
+# =========================
+
 *.local
 
-# Wrangler / Cloudflare
-.wrangler/
-.dev.vars
+# =========================
 
-# Editor directories and files
+# OS FILES
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# EDITOR / IDE
+
+# =========================
+
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.swp
+*.swo
+
+# =========================
+
+# CACHE / TEMP
+
+# =========================
+
+.cache/
+.tmp/
+.temp/
+
+# =========================
+
+# DATABASE
+
+# =========================
+
+*.sqlite
+*.db
+
+# =========================
+
+# SECURITY FILES
+
+# =========================
+
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# =========================
+
+# PACKAGE MANAGER LOCK (choose one)
+
+# =========================
+
+# package-lock.json
+
+# yarn.lock
+
+# pnpm-lock.yaml
+
+# bun.lockb
+
+# =========================
+
+# UPLOADS (if any)
+
+# =========================
+
+uploads/
+public/uploads/
+
+# =========================
+
+# PM2
+
+# =========================
+
+.pm2/
+
+# =========================
+
+# DOCKER (optional)
+
+# =========================
+
+docker-compose.override.yml
