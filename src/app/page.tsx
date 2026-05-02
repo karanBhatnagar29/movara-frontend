@@ -35,8 +35,11 @@ export default async function HomePage() {
       <Hero
         badge={homepage.hero.badge_text}
         title={homepage.hero.title}
-        highlight={homepage.hero.secondary_cta_label || "Live with vitality."}
-        subtitle={homepage.hero.subtitle}
+        highlight={homepage.hero.subtitle || settings.tagline || "Live with vitality."}
+        subtitle={
+          settings.tagline ||
+          "Feel confident, fit, and graceful with movement that actually feels good."
+        }
         primaryCta={{
           label: homepage.hero.secondary_cta_label || "Book a Discovery Call",
           to: homepage.hero.secondary_cta_href || "/contact",
