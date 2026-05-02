@@ -6,7 +6,6 @@ import { Marquee } from "@/components/site/Marquee";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { PricingCard } from "@/components/site/PricingCard";
-import { TestimonialCard } from "@/components/site/TestimonialCard";
 import { FaqList } from "@/components/site/FaqList";
 import { FinalCta } from "@/components/site/FinalCta";
 import { Button } from "@/components/ui/button";
