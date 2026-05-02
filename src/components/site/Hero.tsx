@@ -46,8 +46,9 @@ export function Hero({
           <h1 className="mt-6 font-display text-[clamp(3rem,8.5vw,6.75rem)] font-light leading-[0.95] tracking-tight text-balance">
             {title}
             <br />
-            <span className="relative inline-block italic font-normal text-[var(--coral)]">
-              <span className="scribble-underline">{highlight}</span>
+            <span className="italic font-normal text-[var(--coral)]">
+              Live with{" "}
+              <span className="scribble-underline">vitality.</span>
             </span>
           </h1>
 
