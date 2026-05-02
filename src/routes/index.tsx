@@ -281,18 +281,74 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-foreground/[0.02] py-24 md:py-32">
-        <div className="container-x">
-          <SectionHeading
-            eyebrow="Voices"
-            title={<>Loved by women <em className="italic text-[var(--coral)]">across 40+ countries</em>.</>}
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <TestimonialCard t={TESTIMONIALS[0]} accent="ivory" />
-            <TestimonialCard t={TESTIMONIALS[1]} accent="peach" />
-            <TestimonialCard t={TESTIMONIALS[2]} accent="mint" />
+      {/* Testimonials — editorial pull-quote layout */}
+      <section className="relative overflow-hidden bg-foreground text-background py-24 md:py-32">
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[var(--coral)]/30 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-[var(--gold)]/20 blur-3xl" />
+
+        <div className="container-x relative">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-background/60">
+                <span className="h-px w-8 bg-[var(--coral)]" />
+                Voices
+                <span className="h-px w-8 bg-[var(--coral)]" />
+              </span>
+              <h2 className="mt-5 font-display text-4xl leading-[1.02] tracking-tight md:text-5xl lg:text-6xl">
+                Loved by women <em className="italic text-[var(--coral)]">across 40+ countries</em>.
+              </h2>
+            </div>
+            <p className="text-sm uppercase tracking-[0.22em] text-background/55">
+              № 04 — Voices of Movara
+            </p>
           </div>
+
+          {/* Big pull-quote */}
+          <figure className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-7">
+              <Quote className="h-12 w-12 text-[var(--coral)]" strokeWidth={1.5} />
+              <blockquote className="mt-4 font-display text-3xl italic leading-tight tracking-tight md:text-5xl lg:text-6xl">
+                “{TESTIMONIALS[0].quote}”
+              </blockquote>
+              <figcaption className="mt-8 flex items-center gap-4">
+                <img
+                  src={TESTIMONIALS[0].avatarUrl}
+                  alt={TESTIMONIALS[0].name}
+                  loading="lazy"
+                  className="h-14 w-14 rounded-full object-cover ring-2 ring-[var(--coral)]"
+                />
+                <div>
+                  <p className="font-display text-xl tracking-tight">{TESTIMONIALS[0].name}</p>
+                  <p className="text-sm text-background/60">{TESTIMONIALS[0].role}</p>
+                </div>
+              </figcaption>
+            </div>
+
+            <div className="grid gap-5 lg:col-span-5">
+              {[TESTIMONIALS[1], TESTIMONIALS[2]].map((t) => (
+                <div
+                  key={t.id}
+                  className="rounded-3xl border border-background/10 bg-background/[0.04] p-6 backdrop-blur-sm"
+                >
+                  <p className="font-display text-lg italic leading-snug md:text-xl">
+                    “{t.quote}”
+                  </p>
+                  <div className="mt-5 flex items-center gap-3">
+                    <img
+                      src={t.avatarUrl}
+                      alt={t.name}
+                      loading="lazy"
+                      className="h-10 w-10 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="text-sm font-medium">{t.name}</p>
+                      <p className="text-xs text-background/55">{t.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </figure>
         </div>
       </section>
 
