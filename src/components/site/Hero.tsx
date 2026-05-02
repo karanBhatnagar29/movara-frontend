@@ -4,6 +4,22 @@ import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-movement.jpg";
 import groupImg from "@/assets/group-yoga.jpg";
 
+/**
+ * Render the highlight phrase with the scribble underline applied
+ * only to the last word, so it always feels intentional regardless of wrapping.
+ */
+function HighlightHeadline({ text }: { text: string }) {
+  const words = text.trim().split(/\s+/);
+  const last = words.pop() ?? "";
+  const lead = words.join(" ");
+  return (
+    <span className="italic font-normal text-[var(--coral)]">
+      {lead && <>{lead} </>}
+      <span className="scribble-underline">{last}</span>
+    </span>
+  );
+}
+
 export interface HeroProps {
   badge?: string;
   title?: string;
