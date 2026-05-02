@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles, Star } from "lucide-react";
+import { ArrowUpRight, Star, ArrowDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-movement.jpg";
@@ -15,10 +15,10 @@ export interface HeroProps {
 }
 
 export function Hero({
-  badge = "Global wellness · Live & on-demand",
+  badge = "Est. 2024 · A global movement studio",
   title = "Move with grace.",
   highlight = "Live with vitality.",
-  subtitle = "Movara is a global movement studio for women who want to feel strong, supple, and unmistakably themselves — guided by world-class instructors, in real time.",
+  subtitle = "A global movement studio for women who want to feel strong, supple, and unmistakably themselves — guided by world-class instructors, in real time.",
   primaryCta = { label: "Book a Discovery Call", to: "/contact" },
   secondaryCta = { label: "Explore Classes", to: "/batches" },
   stats = [
@@ -28,30 +28,34 @@ export function Hero({
   ],
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden">
-      {/* Ambient blobs */}
-      <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-[var(--peach)] opacity-60 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 top-40 h-[28rem] w-[28rem] rounded-full bg-[var(--mint)] opacity-50 blur-3xl" />
+    <section className="relative overflow-hidden pt-24 md:pt-28">
+      {/* Ambient warm blobs */}
+      <div className="pointer-events-none absolute -left-32 top-32 h-[28rem] w-[28rem] animate-float-slow rounded-full bg-[var(--peach)] opacity-70 blur-3xl" />
+      <div className="pointer-events-none absolute right-[-8rem] top-10 h-[32rem] w-[32rem] animate-float-slow rounded-full bg-[var(--gold)] opacity-50 blur-3xl [animation-delay:-6s]" />
+      <div className="pointer-events-none absolute inset-0 paper-noise opacity-60" />
 
-      <div className="container-x relative grid gap-10 pb-12 pt-6 lg:grid-cols-12 lg:gap-12 lg:pb-20">
+      <div className="container-x relative grid gap-12 pb-16 lg:grid-cols-12 lg:gap-10 lg:pb-24">
         {/* Left: copy */}
-        <div className="lg:col-span-6 lg:pt-12">
-          <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-background/70 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-foreground/70 backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-[var(--coral)]" />
-            {badge}
-          </span>
+        <div className="lg:col-span-7 lg:pt-6">
+          {/* Editorial eyebrow with date marker */}
+          <div className="flex flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
+            <span className="h-px w-10 bg-foreground/30" />
+            <span>{badge}</span>
+          </div>
 
-          <h1 className="mt-6 font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] tracking-tight text-balance">
+          <h1 className="mt-6 font-display text-[clamp(3rem,8.5vw,6.75rem)] font-light leading-[0.95] tracking-tight text-balance">
             {title}
             <br />
-            <span className="italic text-[var(--coral)]">{highlight}</span>
+            <span className="relative inline-block italic font-normal text-[var(--coral)]">
+              <span className="scribble-underline">{highlight}</span>
+            </span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg text-foreground/70 text-pretty md:text-xl">
+          <p className="mt-7 max-w-xl text-lg text-foreground/70 text-pretty md:text-xl">
             {subtitle}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <Button asChild variant="coral" size="xl" className="group">
               <Link to={primaryCta.to as "/"}>
                 {primaryCta.label}
@@ -63,13 +67,14 @@ export function Hero({
             </Button>
           </div>
 
-          <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-foreground/10 pt-8">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <dt className="font-display text-3xl tracking-tight text-foreground md:text-4xl">
+          {/* Stats — editorial number row */}
+          <dl className="mt-14 grid grid-cols-3 gap-4 border-t border-foreground/10 pt-8">
+            {stats.map((s, i) => (
+              <div key={s.label} className={i > 0 ? "border-l border-foreground/10 pl-4" : ""}>
+                <dt className="font-display text-3xl tracking-tight text-foreground md:text-5xl">
                   {s.value}
                 </dt>
-                <dd className="mt-1 text-xs uppercase tracking-wider text-foreground/55">
+                <dd className="mt-2 text-[0.7rem] uppercase tracking-[0.18em] text-foreground/55">
                   {s.label}
                 </dd>
               </div>
@@ -78,8 +83,9 @@ export function Hero({
         </div>
 
         {/* Right: image collage */}
-        <div className="relative lg:col-span-6">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-elegant">
+        <div className="relative lg:col-span-5 lg:pl-4">
+          {/* Main hero image */}
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-elegant">
             <img
               src={heroImg}
               alt="Woman in flowing movement bathed in golden studio light"
@@ -87,24 +93,40 @@ export function Hero({
               width={1080}
               height={1350}
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/40 to-transparent p-6">
-              <div className="flex items-center gap-3 rounded-2xl bg-background/90 p-3 backdrop-blur-md">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-warm">
-                  <Star className="h-4 w-4 fill-foreground text-foreground" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--ocean)]/30 via-transparent to-transparent" />
+
+            {/* Live now chip */}
+            <div className="absolute inset-x-4 bottom-4">
+              <div className="flex items-center gap-3 rounded-2xl bg-background/95 p-3 shadow-soft backdrop-blur-md">
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[var(--coral)]">
+                  <Star className="h-4 w-4 fill-[var(--coral-foreground)] text-[var(--coral-foreground)]" />
+                  <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--coral)] opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--coral)] ring-2 ring-background" />
+                  </span>
                 </div>
                 <div className="flex-1">
                   <p className="text-sm font-medium text-foreground">Live now · Morning Flow</p>
                   <p className="text-xs text-foreground/60">42 practicing together</p>
                 </div>
-                <span className="flex h-2 w-2 rounded-full bg-[var(--coral)]">
-                  <span className="absolute h-2 w-2 animate-ping rounded-full bg-[var(--coral)]" />
-                </span>
               </div>
             </div>
           </div>
 
+          {/* Rotated sticker badge */}
+          <div className="sticker absolute -left-4 -top-4 z-10 hidden h-28 w-28 items-center justify-center rounded-full bg-[var(--coral)] text-center text-[var(--coral-foreground)] shadow-glow md:flex lg:-left-10">
+            <div>
+              <p className="font-display text-2xl leading-none">Free</p>
+              <p className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.15em]">
+                Discovery
+                <br />
+                Call
+              </p>
+            </div>
+          </div>
+
           {/* Floating secondary card */}
-          <div className="absolute -bottom-8 -left-6 hidden w-64 overflow-hidden rounded-3xl border-4 border-background shadow-elegant md:block lg:-left-10">
+          <div className="absolute -bottom-10 -left-8 hidden w-56 overflow-hidden rounded-3xl border-[6px] border-background shadow-elegant md:block lg:-left-14">
             <img
               src={groupImg}
               alt="Group practicing in a sunlit studio"
@@ -115,16 +137,32 @@ export function Hero({
             />
           </div>
 
-          {/* Floating quote */}
-          <div className="absolute -right-2 top-6 hidden max-w-[240px] rounded-2xl bg-ivory p-5 shadow-elegant md:block">
-            <p className="font-display text-lg italic leading-snug">
+          {/* Floating quote card */}
+          <div className="absolute -right-3 top-10 hidden max-w-[230px] rounded-2xl bg-ivory p-5 shadow-elegant md:block">
+            <div className="flex gap-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-3.5 w-3.5 fill-[var(--coral)] text-[var(--coral)]" />
+              ))}
+            </div>
+            <p className="mt-2 font-display text-base italic leading-snug">
               “I finally feel at home in my body.”
             </p>
-            <p className="mt-2 text-xs uppercase tracking-wider text-foreground/55">
+            <p className="mt-2 text-[0.65rem] uppercase tracking-[0.18em] text-foreground/55">
               — Aanya, Member
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="container-x relative hidden items-center justify-between pb-6 lg:flex">
+        <span className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-foreground/55">
+          <ArrowDown className="h-4 w-4 animate-bounce text-[var(--coral)]" />
+          Scroll to explore
+        </span>
+        <span className="text-xs font-medium uppercase tracking-[0.22em] text-foreground/55">
+          № 01 — The Practice
+        </span>
       </div>
     </section>
   );
