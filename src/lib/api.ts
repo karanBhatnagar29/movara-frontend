@@ -301,7 +301,7 @@ export type MyClassesLookupResult = {
 
 const SERVER_API_BASE_URL =
   process.env.BACKEND_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL;
-const CLIENT_PROXY_BASE_URL = "/api/backend/api";
+const CLIENT_PROXY_BASE_URL = "/api/backend";
 
 function buildUrl(path: string) {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
