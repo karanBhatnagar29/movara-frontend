@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, HeartPulse, Globe, Sparkles, ShieldCheck, Quote } from "lucide-react";
-// Sparkles kept for potential future use in WHY icons
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Hero } from "@/components/site/Hero";
 import { Marquee } from "@/components/site/Marquee";
