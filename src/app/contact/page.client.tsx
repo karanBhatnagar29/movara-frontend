@@ -158,7 +158,7 @@ export function ContactPageClient({ settings }: { settings: SiteSettings }) {
                     setForm((current) => ({ ...current, phone: event.target.value }))
                   }
                   className="mt-2 h-12 rounded-2xl"
-                  placeholder="+91 98765 43210"
+                  placeholder="Enter your phone number"
                 />
               </div>
             </div>
