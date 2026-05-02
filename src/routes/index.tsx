@@ -194,11 +194,14 @@ function HomePage() {
     <SiteLayout>
       <Hero />
 
+      {/* Animated brand strip */}
+      <Marquee variant="dark" />
+
       {/* Featured services */}
       <section className="container-x py-24 md:py-32">
         <div className="flex flex-col items-end justify-between gap-6 md:flex-row">
           <SectionHeading
-            eyebrow="Practices"
+            eyebrow="The Practice"
             title={<>A practice for every <em className="italic text-[var(--coral)]">version of you</em>.</>}
             description="From deep-strength pilates to slow, restorative breath work — find a way to move that meets your body where it is today."
           />
@@ -210,8 +213,8 @@ function HomePage() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((s) => (
-            <ServiceCard key={s.id} service={s} />
+          {SERVICES.map((s, i) => (
+            <ServiceCard key={s.id} service={s} index={i} />
           ))}
         </div>
       </section>
