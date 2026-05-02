@@ -44,32 +44,32 @@ export function Hero({
   ],
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden pt-32 md:pt-36">
+    <section className="relative overflow-hidden pt-24 md:pt-28">
       {/* Ambient warm blobs */}
       <div className="pointer-events-none absolute -left-32 top-32 h-[28rem] w-[28rem] animate-float-slow rounded-full bg-[var(--peach)] opacity-70 blur-3xl" />
       <div className="pointer-events-none absolute right-[-8rem] top-10 h-[32rem] w-[32rem] animate-float-slow rounded-full bg-[var(--gold)] opacity-50 blur-3xl [animation-delay:-6s]" />
       <div className="pointer-events-none absolute inset-0 paper-noise opacity-60" />
 
-      <div className="container-x relative grid gap-10 pb-12 lg:grid-cols-12 lg:gap-8 lg:pb-18">
+      <div className="container-x relative grid gap-8 pb-8 lg:grid-cols-12 lg:gap-8 lg:pb-12">
         {/* Left: copy */}
-        <div className="relative z-10 lg:col-span-7 lg:pt-6">
+        <div className="relative z-10 lg:col-span-7 lg:pt-2">
           {/* Editorial eyebrow with date marker */}
           <div className="flex flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-foreground/70">
             <span className="h-px w-10 bg-foreground/30" />
             <span>{badge}</span>
           </div>
 
-          <h1 className="mt-5 font-display text-[clamp(2.9rem,6.7vw,5.4rem)] font-light leading-[0.96] tracking-tight text-balance">
+          <h1 className="mt-4 font-display text-[clamp(2.6rem,5.9vw,4.85rem)] font-light leading-[0.96] tracking-tight text-balance">
             {title}
             <br />
             <HighlightHeadline text={highlight} />
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-7 text-foreground/70 text-pretty md:text-lg">
+          <p className="mt-4 max-w-xl text-[0.98rem] leading-7 text-foreground/70 text-pretty md:text-[1.05rem]">
             {subtitle}
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <Button asChild variant="coral" size="lg" className="group">
               <Link href={primaryCta.to}>
                 {primaryCta.label}
@@ -82,10 +82,10 @@ export function Hero({
           </div>
 
           {/* Stats — editorial number row */}
-          <dl className="mt-10 grid grid-cols-3 gap-3 border-t border-foreground/10 pt-6">
+          <dl className="mt-8 grid grid-cols-3 gap-3 border-t border-foreground/10 pt-5">
             {stats.map((s, i) => (
               <div key={s.label} className={i > 0 ? "border-l border-foreground/10 pl-4" : ""}>
-                <dt className="font-display text-2xl tracking-tight text-foreground md:text-4xl">
+                <dt className="font-display text-[1.9rem] tracking-tight text-foreground md:text-[3.15rem]">
                   {s.value}
                 </dt>
                 <dd className="mt-1.5 text-[0.65rem] uppercase tracking-[0.16em] text-foreground/55">
@@ -97,9 +97,9 @@ export function Hero({
         </div>
 
         {/* Right: image collage */}
-        <div className="relative pb-10 lg:col-span-5 lg:pl-3 lg:pb-14">
+        <div className="relative pb-8 lg:col-span-5 lg:pl-3 lg:pb-10">
           {/* Main hero image */}
-          <div className="relative aspect-[4/4.8] overflow-hidden rounded-[1.75rem] shadow-elegant">
+          <div className="relative aspect-[4/4.25] overflow-hidden rounded-[1.75rem] shadow-elegant">
             <img
               src={heroImg.src}
               alt="Woman in flowing movement bathed in golden studio light"
@@ -111,18 +111,33 @@ export function Hero({
           </div>
 
           {/* Live now chip */}
-          <div className="absolute inset-x-3 -bottom-2 z-20 lg:inset-x-6">
-            <div className="flex items-center gap-3 rounded-2xl bg-background/95 p-2.5 shadow-soft backdrop-blur-md">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[var(--coral)]">
-                <Star className="h-4 w-4 fill-[var(--coral-foreground)] text-[var(--coral-foreground)]" />
-                <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--coral)] opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--coral)] ring-2 ring-background" />
-                </span>
+          <div className="absolute inset-x-3 -bottom-1 z-20 lg:inset-x-6">
+            <div className="relative rounded-2xl bg-background/95 py-2 pl-[8.5rem] pr-4 shadow-soft backdrop-blur-md sm:pl-[9.25rem]">
+              <div className="absolute -left-2 top-1/2 z-10 -translate-y-1/2 overflow-hidden rounded-[1.75rem] border-[6px] border-background shadow-elegant">
+                <img
+                  src={groupImg.src}
+                  alt="Group practicing in a sunlit studio"
+                  loading="lazy"
+                  width={400}
+                  height={300}
+                  className="h-24 w-24 object-cover sm:h-28 sm:w-28"
+                />
               </div>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-foreground">Live now · Morning Flow</p>
-                <p className="text-xs text-foreground/60">42 practicing together</p>
+
+              <div className="flex items-center gap-3">
+                <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--coral)]">
+                  <Star className="h-4 w-4 fill-[var(--coral-foreground)] text-[var(--coral-foreground)]" />
+                  <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--coral)] opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--coral)] ring-2 ring-background" />
+                  </span>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium text-foreground sm:text-base">
+                    Live now · Morning Flow
+                  </p>
+                  <p className="text-xs text-foreground/60 sm:text-sm">42 practicing together</p>
+                </div>
               </div>
             </div>
           </div>
@@ -137,18 +152,6 @@ export function Hero({
                 Call
               </p>
             </div>
-          </div>
-
-          {/* Floating secondary card */}
-          <div className="absolute -bottom-6 left-3 z-10 hidden w-40 overflow-hidden rounded-3xl border-[6px] border-background shadow-elegant lg:block xl:-left-6">
-            <img
-              src={groupImg.src}
-              alt="Group practicing in a sunlit studio"
-              loading="lazy"
-              width={400}
-              height={300}
-              className="aspect-[4/3] w-full object-cover"
-            />
           </div>
 
           {/* Floating quote card */}
